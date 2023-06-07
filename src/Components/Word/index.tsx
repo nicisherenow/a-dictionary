@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import MyAudioPlayer from '../MyAudioPlayer'
+import { findUsableMp3 } from '../../assets/functions'
 import './Word.css'
 
 export default function Word(): React.ReactElement {
@@ -10,11 +11,8 @@ export default function Word(): React.ReactElement {
   const [partOfSpeech, setPartOfSpeech] = useState('')
   const [synonyms, setSynonyms] = useState([])
   const [error, setError] = useState('')
-  const [wordInfo, setWordInfo] = useState([])
   const [sample, setSample] = useState('')
 
-  console.log(wordInfo)
-  console.log(sample)
 
   useEffect(() => {
     (async () => {
@@ -24,12 +22,12 @@ export default function Word(): React.ReactElement {
       if (data.message) {
         setError(data.message)
       } else {
+        let url = findUsableMp3(data[0].phonetics)
         setError('')
         setDefinition(data[0].meanings[0].definitions[0].definition)
         setPartOfSpeech(data[0].meanings[0].partOfSpeech)
         setSynonyms(data[0].meanings[0].synonyms)
-        setSample(data[0].phonetics[1].audio)
-        setWordInfo(data[0])
+        setSample(url)
       }
     })()
 
@@ -38,7 +36,7 @@ export default function Word(): React.ReactElement {
 
   return (
     <>
-      <h3>{word}</h3>
+      <h3>{word?.toLowerCase()}</h3>
       {error ?
       <p>Error: {error}</p>
        :

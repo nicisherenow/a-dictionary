@@ -2,13 +2,21 @@
   list-style-type: none;
 }
 
+h3 {
+  margin: 0;
+  width: 80%;
+  padding-bottom: 1svh;
+  border-bottom: 1px solid;
+}
+
 .word-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
   width: 80svw;
-  margin: 0 10svw;
+  margin: 0 auto;
   border: 1px solid;
   border-radius: .4rem;
   padding: 1svh;

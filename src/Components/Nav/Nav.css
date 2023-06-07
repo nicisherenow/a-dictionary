@@ -1,10 +1,15 @@
 .word-find-form {
   display: flex;
+  justify-content: center;
   gap: 1vw;
 }
 
 input {
   border-radius: .4rem;
+}
+
+h1 {
+  text-align: center;
 }
 
 .base-container {

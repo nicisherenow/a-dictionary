@@ -1,3 +1,15 @@
 .synonyms {
   list-style-type: none;
 }
+
+.word-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80svw;
+  margin: 0 10svw;
+  border: 1px solid;
+  border-radius: .4rem;
+  padding: 1svh;
+}

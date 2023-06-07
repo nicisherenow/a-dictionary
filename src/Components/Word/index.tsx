@@ -35,7 +35,7 @@ export default function Word(): React.ReactElement {
 
 
   return (
-    <>
+    <div className='word-container'>
       <h3>{word?.toLowerCase()}</h3>
       {error ?
       <p>Error: {error}</p>
@@ -53,6 +53,6 @@ export default function Word(): React.ReactElement {
           : null}
         </>
        }
-    </>
+    </div>
   )
 }

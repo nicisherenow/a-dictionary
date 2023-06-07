@@ -44,9 +44,9 @@ export default function Word(): React.ReactElement {
           <p>Defintion: {definition}</p>
           <p>Part of speech: {partOfSpeech}</p>
           {synonyms.length ?
-          <ul className='synonyms'>Synonyms: {synonyms.map((synonym => (
-            <li><Link to={`/${synonym}`} key={synonym}>{synonym}</Link></li>
-            )))}</ul>
+          <p className='synonyms'>Synonyms: {synonyms.map((synonym => (
+            <Link to={`/${synonym}`} key={synonym}>{synonym}</Link>
+            )))}</p>
           : null}
           {sample ?
           <MyAudioPlayer mp3Url={sample} />

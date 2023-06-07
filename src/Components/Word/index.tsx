@@ -53,6 +53,11 @@ export default function Word(): React.ReactElement {
           : null}
         </>
        }
+       <div className="created-by">
+        <div>Created by: </div>
+        <a href='https://github.com/nicisherenow'>Github</a>
+        <a href='https://www.linkedin.com/in/nicholas-talbot-5441a4242/'>LinkedIn</a>
+      </div>
     </div>
   )
 }

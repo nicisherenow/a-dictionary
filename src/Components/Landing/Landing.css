@@ -1,15 +1,4 @@
-.synonyms {
-  list-style-type: none;
-}
-
-h3 {
-  margin: 0;
-  width: 80%;
-  padding-bottom: 1svh;
-  border-bottom: 1px solid;
-}
-
-.word-container {
+.landing-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -20,9 +9,4 @@ h3 {
   border: 1px solid;
   border-radius: .4rem;
   padding: 1svh;
-}
-
-.created-by {
-  display: flex;
-  flex-direction: column;
 }

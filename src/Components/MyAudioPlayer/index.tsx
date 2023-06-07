@@ -23,7 +23,7 @@ export default function MyAudioPlayer( { mp3Url }: MyAudioPlayerProps): React.Re
 
   const styled = {
 
-    transform: `scale(${width <= 1000 ? width * .001 : 1})`
+    transform: `scale(${width <= 1000 ? width * .0013 : 1})`
   }
 
   return (

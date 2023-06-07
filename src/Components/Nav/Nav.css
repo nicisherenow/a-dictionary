@@ -1,0 +1,14 @@
+.word-find-form {
+  display: flex;
+  gap: 1vw;
+}
+
+input {
+  border-radius: .4rem;
+}
+
+.base-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

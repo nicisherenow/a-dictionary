@@ -1,5 +1,6 @@
 import './App.css'
 import Nav from './Components/Nav'
+import Word from './Components/Word'
 import { Route, Routes } from 'react-router-dom'
 
 export default function App() {
@@ -8,7 +9,7 @@ export default function App() {
     <>
       <Nav />
       <Routes>
-        <Route path="/:word" />
+        <Route path="/:word" element={<Word />}/>
       </Routes>
     </>
   )

@@ -1,25 +1,25 @@
 import React, { useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 export default function Nav(): React.ReactElement {
   const [word, setWord] = useState('')
-  const history = useHistory()
-  console.log(word)
+  const navigate = useNavigate()
 
-  const handleWordChange = (e): void => {
+  const handleWordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setWord(e.target.value)
   }
 
-  const handleOnSubmit = (e): void => {
+  const handleOnSubmit = (e: React.FormEvent): void => {
     e.preventDefault()
 
+    navigate(`/${word}`)
     setWord('')
   }
 
   return (
     <>
     <form onSubmit={handleOnSubmit}>
-      <input type='text' placeholder="Word you'd like defined..." onChange={handleWordChange} value={word}></input>
+      <input type='text' placeholder="Word you'd like defined..." onChange={handleWordChange} value={word} />
       <button type='submit' >Submit</button>
     </form>
     </>

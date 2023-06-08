@@ -1,1 +1,4 @@
-
+.audio {
+  display: flex;
+  align-self: center;
+}

@@ -7,12 +7,14 @@ import './Word.css'
 export default function Word(): React.ReactElement {
   const { word } = useParams()
 
+  const [definitions, setDefinitions] = useState([])
   const [definition, setDefinition] = useState('')
   const [partOfSpeech, setPartOfSpeech] = useState('')
   const [synonyms, setSynonyms] = useState([])
   const [error, setError] = useState('')
   const [sample, setSample] = useState('')
 
+  console.log(definitions)
 
   useEffect(() => {
     (async () => {
@@ -27,6 +29,7 @@ export default function Word(): React.ReactElement {
         setDefinition(data[0].meanings[0].definitions[0].definition)
         setPartOfSpeech(data[0].meanings[0].partOfSpeech)
         setSynonyms(data[0].meanings[0].synonyms)
+        setDefinitions(data[0].meanings[0].definitions)
         setSample(url)
       }
     })()
@@ -36,13 +39,16 @@ export default function Word(): React.ReactElement {
 
   return (
     <div className='word-container'>
-      <h3>{word?.toLowerCase()}</h3>
+      <h3 className='word-start'>{word?.toLowerCase()} • {partOfSpeech}</h3>
       {error ?
       <p>Error: {error}</p>
        :
         <>
-          <p>Defintion: {definition}</p>
-          <p>Part of speech: {partOfSpeech}</p>
+          {definitions.length ? definitions.map((defined, i) => (
+            <p>{i + 1} • {defined.definition}</p>
+
+          ))
+        : null}
           {synonyms.length ?
           <p className='synonyms'>Synonyms: {synonyms.map((synonym => (
             <Link to={`/${synonym}`} key={synonym}>{synonym}</Link>

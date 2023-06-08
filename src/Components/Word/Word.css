@@ -15,8 +15,7 @@ h3 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  text-align: center;
+  align-items: flex-start;
   width: 80svw;
   margin: 0 auto;
   border: 1px solid;
@@ -27,4 +26,15 @@ h3 {
 .created-by {
   display: flex;
   flex-direction: column;
+  align-self: center;
+}
+
+.bold-it {
+  font-weight: 700
+}
+
+.word-start {
+  display: flex;
+  align-self: center;
+  justify-content: center;
 }

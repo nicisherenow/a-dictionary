@@ -16,7 +16,7 @@ export default function ActiveWord( { starter, definitions, synonyms, mp3Url }: 
   return (
     <>
         {!isCurrActive ?
-          <h3 onClick={()=> setIsCurrActive(!isCurrActive)} className='word-start'>{starter}</h3> :
+          <h3 onClick={()=> setIsCurrActive(!isCurrActive)} className='word-start-button'>{starter}</h3> :
           <>
           <h3 onClick={()=> setIsCurrActive(!isCurrActive)} className='word-start'>{starter}</h3>
           {definitions.length ? definitions.map((defined: string, i: number) => (
@@ -30,7 +30,7 @@ export default function ActiveWord( { starter, definitions, synonyms, mp3Url }: 
                 {mp3Url ?
                   <MyAudioPlayer mp3Url={mp3Url} />
                   : null}
-                  </>
+          </>
         }
     </>
   )

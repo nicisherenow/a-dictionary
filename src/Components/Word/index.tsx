@@ -11,6 +11,8 @@ export default function Word(): React.ReactElement {
   const [wordInfo, setWordInfo] = useState<WordInfo[]>([])
   const [wordObj, setWordObj] = useState<WordObj[]>([])
 
+  console.log(wordInfo)
+
   useEffect(() => {
     setWordObj(
       wordInfo.flatMap(info => {

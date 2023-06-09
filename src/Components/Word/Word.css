@@ -20,13 +20,14 @@ h3 {
   margin: 0 auto;
   border: 1px solid;
   border-radius: .4rem;
-  padding: 1svh;
+  padding: 0 1svh;
 }
 
 .created-by {
   display: flex;
   flex-direction: column;
   align-self: center;
+  text-align: center;
 }
 
 .bold-it {
@@ -37,4 +38,11 @@ h3 {
   display: flex;
   align-self: center;
   justify-content: center;
+}
+
+.error-layout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }

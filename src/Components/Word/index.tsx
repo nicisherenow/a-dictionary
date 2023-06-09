@@ -1,20 +1,37 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import MyAudioPlayer from '../MyAudioPlayer'
-import { findUsableMp3 } from '../../assets/functions'
+import { findUsableMp3, WordObj, WordInfo, Definitions } from '../../assets/functions'
 import './Word.css'
 
 export default function Word(): React.ReactElement {
   const { word } = useParams()
 
-  const [definitions, setDefinitions] = useState([])
-  const [definition, setDefinition] = useState('')
+  const [definitions, setDefinitions] = useState<Definitions[]>([])
   const [partOfSpeech, setPartOfSpeech] = useState('')
   const [synonyms, setSynonyms] = useState([])
   const [error, setError] = useState('')
   const [sample, setSample] = useState('')
+  const [wordInfo, setWordInfo] = useState<WordInfo[]>([])
+  const [wordObj, setWordObj] = useState<WordObj[]>([])
 
-  console.log(definitions)
+  console.log(wordInfo)
+  console.log(wordObj)
+
+  useEffect(() => {
+    setWordObj(
+      wordInfo.flatMap(info => {
+      return info.meanings.flatMap((meaning) => {
+        return {
+        starter: `${word} • ${meaning.partOfSpeech}`,
+        definitions: meaning.definitions.map(define => define.definition),
+        synonyms: meaning.synonyms.map(synonym => synonym),
+        mp3Url: findUsableMp3(info.phonetics)
+        }
+      })
+    })
+    )
+  }, [wordInfo])
 
   useEffect(() => {
     (async () => {
@@ -26,10 +43,10 @@ export default function Word(): React.ReactElement {
       } else {
         let url = findUsableMp3(data[0].phonetics)
         setError('')
-        setDefinition(data[0].meanings[0].definitions[0].definition)
         setPartOfSpeech(data[0].meanings[0].partOfSpeech)
         setSynonyms(data[0].meanings[0].synonyms)
         setDefinitions(data[0].meanings[0].definitions)
+        setWordInfo(data)
         setSample(url)
       }
     })()
@@ -39,16 +56,14 @@ export default function Word(): React.ReactElement {
 
   return (
     <div className='word-container'>
-      <h3 className='word-start'>{word?.toLowerCase()} • {partOfSpeech}</h3>
       {error ?
-      <p>Error: {error}</p>
-       :
-        <>
+      <p className='error-layout'>Searched for {word?.toLowerCase()}: {error}</p>
+      :
+      <>
+      <h3 className='word-start'>{word?.toLowerCase()} • {partOfSpeech}</h3>
           {definitions.length ? definitions.map((defined, i) => (
-            <p>{i + 1} • {defined.definition}</p>
-
-          ))
-        : null}
+            <p key={i + 1}>{i + 1} • {defined?.definition}</p>
+          )) : null}
           {synonyms.length ?
           <p className='synonyms'>Synonyms: {synonyms.map((synonym => (
             <Link to={`/${synonym}`} key={synonym}>{synonym}</Link>

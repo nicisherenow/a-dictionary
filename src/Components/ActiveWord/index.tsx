@@ -20,10 +20,10 @@ export default function ActiveWord( { starter, definitions, synonyms, mp3Url }: 
           <>
           <h3 onClick={()=> setIsCurrActive(!isCurrActive)} className='word-start'>{starter}</h3>
           {definitions.length ? definitions.map((defined: string, i: number) => (
-            <p key={i + 1}>{i + 1} • {defined}</p>
+            <p onClick={()=> setIsCurrActive(!isCurrActive)} key={i + 1}>{i + 1} • {defined}</p>
             )) : null}
             {synonyms.length ?
-              <p className='synonyms'>Synonyms: {synonyms.map((synonym: string) => (
+              <p onClick={()=> setIsCurrActive(!isCurrActive)} className='synonyms'>Synonyms: {synonyms.map((synonym: string) => (
                 <Link to={`/${synonym}`} key={synonym}>{synonym}</Link>
                 ))}</p>
                 : null}

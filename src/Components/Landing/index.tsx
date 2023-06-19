@@ -9,6 +9,8 @@ export default function Landing(): React.ReactElement {
       <p>Thanks for coming to check out the easy to use dictionary.</p>
       <div className="created-by">
         <div>Created by: </div>
+        <span>Nicholas Talbot</span>
+        <span>Please check out my links!</span>
         <a href='https://github.com/nicisherenow'>Github</a>
         <a href='https://www.linkedin.com/in/nicholas-talbot-5441a4242/'>LinkedIn</a>
       </div>

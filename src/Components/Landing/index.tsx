@@ -11,8 +11,8 @@ export default function Landing(): React.ReactElement {
         <div>Created by: </div>
         <span>Nicholas Talbot</span>
         <span>Please check out my links!</span>
-        <a href='https://github.com/nicisherenow'>Github</a>
-        <a href='https://www.linkedin.com/in/nicholas-talbot-5441a4242/'>LinkedIn</a>
+        <a href='https://github.com/nicisherenow' target="_blank" rel="noreferrer">Github</a>
+        <a href='https://www.linkedin.com/in/nicholas-talbot-5441a4242/' target="_blank" rel="noreferrer">LinkedIn</a>
       </div>
     </div>
   )
